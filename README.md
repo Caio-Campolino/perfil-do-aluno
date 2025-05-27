@@ -25,14 +25,6 @@ Este repositório contém o desenvolvimento do Projeto Perfil do Aluno, dividido
 
 ---
 
-## 🔗 Acesso ao Projeto
-
-Este projeto foi feito para ser visualizado localmente. Cada fase pode ser aberta em seu respectivo `index.html`.
-
-Se publicado com GitHub Pages, a visualização principal pode ser configurada com os arquivos da FASE3.
-
----
-
 ## ✍️ Autor
 
 - **Caio José Campolino**
