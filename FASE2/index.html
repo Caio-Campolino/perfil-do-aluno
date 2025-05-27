@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- Declara que o documento está usando HTML5 -->
+<html lang="pt-br">
+<!-- Define o idioma da página como português do Brasil -->
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Define a codificação de caracteres como UTF-8, compatível com acentos e caracteres especiais -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Garante que a página será responsiva em dispositivos móveis -->
+
+  <title>Perfil do Aluno - Caio Campolino</title>
+  <!-- Define o título que será exibido na aba do navegador -->
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- Importa o arquivo CSS externo com as definições de estilo da página -->
+</head>
+
+<body>
+  <!-- Início do corpo da página -->
+
+  <main class="container">
+    <!-- Conteúdo principal da página, centralizado por classe no CSS -->
+
+    <header class="header">
+      <!-- Cabeçalho com as informações iniciais do aluno -->
+      <h1>Caio José Campolino</h1>
+      <!-- Nome do aluno em destaque -->
+      <p><strong>RA:</strong> 1222010308</p>
+      <p><strong>Curso e Período:</strong> Análise e Desenvolvimento de Software – 5º Semestre</p>
+      <p><strong>Endereço:</strong> Rua do Contorno, Bairro Rosário, Rio Acima - MG</p>
+    </header>
+
+    <section class="gallery">
+      <!-- Galeria principal com imagem grande e miniaturas -->
+      <img id="mainPhoto" src="photo1.jpg" alt="Foto principal de Caio" />
+      <!-- Imagem exibida inicialmente (foto principal) -->
+
+      <div class="thumbnails">
+        <!-- Miniaturas clicáveis para trocar a imagem principal -->
+        <img src="photo1.jpg" alt="Foto 1" onclick="changePhoto(this)" />
+        <img src="photo2.jpg" alt="Foto 2" onclick="changePhoto(this)" />
+        <img src="photo3.jpg" alt="Foto 3" onclick="changePhoto(this)" />
+      </div>
+    </section>
+
+    <section>
+      <!-- Seção com lista das disciplinas já cursadas -->
+      <h2>UCs já cursadas</h2>
+      <ul>
+        <li>Ambientes computacionais e conectividade</li>
+        <li>Gestão e qualidade de software</li>
+        <li>Modelagem de software</li>
+        <li>Modelos, métodos e técnicas da engenharia de software</li>
+        <li>Programação de soluções computacionais</li>
+        <li>Sistemas computacionais e segurança</li>
+        <li>Inovação, sustentabilidade e competitividade empresarial</li>
+        <li>Análise de dados e big data</li>
+        <li>Inglês instrumental e pensamento digital</li>
+      </ul>
+    </section>
+
+    <section>
+      <!-- Seção com lista das disciplinas em andamento -->
+      <h2>UCs em andamento</h2>
+      <ul>
+        <li>Sistemas distribuídos e mobile</li>
+        <li>Usabilidade, desenvolvimento web, mobile e jogos</li>
+      </ul>
+    </section>
+
+    <section>
+      <!-- Seção com o perfil pessoal do aluno -->
+      <h2>Perfil Pessoal</h2>
+      <p>
+        Sou estudante e entusiasta de Segurança da Informação. Desde criança gostava de desmontar brinquedos para entender como funcionavam e se podia modificá-los.
+        Sempre tive contato com tecnologia, cinema, literatura e música. Meus hobbies incluem tocar guitarra, aprender instrumentos de corda, assistir filmes de terror e clássicos, ler mangás e livros de fantasia épica.
+      </p>
+    </section>
+
+    <section>
+      <!-- Seção com o perfil profissional e acadêmico -->
+      <h2>Perfil Profissional / Acadêmico</h2>
+      <p>
+        Trabalho como Analista de Segurança da Informação Jr na Tecnol Sistemas de Automação. Entrei como estagiário em Infraestrutura no final de 2022 e fui efetivado após 10 meses.
+        Após 1 ano e 2 meses, migrei para a área de Segurança da Informação. Estou me especializando em segurança ofensiva, proteção de endpoints e resposta a incidentes.
+        Meu objetivo é me tornar Pentester, atuando na descoberta e exploração de vulnerabilidades em sistemas web e infraestrutura.
+      </p>
+    </section>
+
+    <section>
+      <!-- Seção com os dados de contato e redes sociais -->
+      <h2>Contatos e Redes Sociais</h2>
+      <ul>
+        <li><a href="mailto:caiojose531@gmail.com">E-mail</a></li>
+        <li><a href="https://www.linkedin.com/in/caio-campolino-0ab401269" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.github.com/Caio-Campolino/" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Função que troca a imagem principal da galeria
+    function changePhoto(element) {
+      document.getElementById("mainPhoto").src = element.src;
+    }
+  </script>
+
+</body>
+</html>

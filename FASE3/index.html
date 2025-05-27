@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- Declaração do tipo de documento HTML5 -->
+<html lang="pt-br">
+<!-- Define o idioma como português do Brasil -->
+
+<head>
+  <!-- Configurações da página -->
+  <meta charset="UTF-8" /> <!-- Suporte a acentuação -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsividade em dispositivos móveis -->
+  <title>Perfil do Aluno - Caio Campolino</title> <!-- Título da aba -->
+  <link rel="stylesheet" href="style.css" /> <!-- Importa o arquivo CSS -->
+</head>
+
+<body>
+  <main class="container">
+    <!-- Área principal da página -->
+
+    <header class="header">
+      <!-- Cabeçalho com dados pessoais -->
+      <h1>Caio José Campolino</h1>
+      <p><strong>RA:</strong> 1222010308</p>
+      <p><strong>Curso e Período:</strong> Análise e Desenvolvimento de Software – 5º Semestre</p>
+      <p><strong>Endereço:</strong> Rua do Contorno, Bairro Rosário, Rio Acima - MG</p>
+
+      <!-- Campo CPF com máscara e validação -->
+      <p><strong>CPF:</strong>
+        <input type="text" id="cpf" placeholder="000.000.000-00"
+               oninput="mascararCPF(this)" onblur="validarCPF()" maxlength="14" />
+      </p>
+      <div id="mensagem-cpf" class="aviso-cpf" style="display: none;">
+        <strong>Perfil do Aluno:</strong> CPF inválido! O formato correto é 000.000.000-00.
+      </div>
+
+      <!-- Campo E-mail com validação -->
+      <p><strong>E-mail:</strong>
+        <input type="text" id="email" placeholder="exemplo@dominio.com"
+               onblur="validarEmail()" />
+      </p>
+      <div id="mensagem-email" class="aviso-cpf" style="display: none;">
+        <strong>Perfil do Aluno:</strong> E-mail inválido! Use o formato exemplo@dominio.com
+      </div>
+    </header>
+
+    <!-- Galeria de fotos com imagem principal e miniaturas -->
+    <section class="gallery">
+      <img id="mainPhoto" src="photo1.jpg" alt="Foto principal de Caio" />
+      <div class="thumbnails">
+        <img src="photo1.jpg" alt="Foto 1" onclick="changePhoto(this)" />
+        <img src="photo2.jpg" alt="Foto 2" onclick="changePhoto(this)" />
+        <img src="photo3.jpg" alt="Foto 3" onclick="changePhoto(this)" />
+      </div>
+    </section>
+
+    <!-- Lista de UCs cursadas com botões para ordenar -->
+    <section>
+      <h2>UCs já cursadas</h2>
+      <ul id="lista-ucs"></ul>
+      <button onclick="adicionarUC()">Adicionar nova UC</button>
+    </section>
+
+    <!-- Lista fixa de UCs em andamento -->
+    <section>
+      <h2>UCs em andamento</h2>
+      <ul>
+        <li>Sistemas distribuídos e mobile</li>
+        <li>Usabilidade, desenvolvimento web, mobile e jogos</li>
+      </ul>
+    </section>
+
+    <!-- Descrição do perfil pessoal com possibilidade de adição dinâmica -->
+    <section>
+      <h2>Perfil Pessoal</h2>
+      <div id="perfil-pessoal">
+        <p>
+          Sou estudante e entusiasta de Segurança da Informação...
+        </p>
+      </div>
+      <!-- Entrada para nova informação no perfil -->
+      <input type="text" id="nova-info" placeholder="Adicione algo ao seu perfil..." />
+      <button onclick="adicionarPerfil()">Adicionar</button>
+    </section>
+
+    <!-- Descrição profissional e acadêmica -->
+    <section>
+      <h2>Perfil Profissional / Acadêmico</h2>
+      <p>
+        Trabalho como Analista de Segurança da Informação Jr...
+      </p>
+    </section>
+
+    <!-- Contatos e redes sociais -->
+    <section>
+      <h2>Contatos e Redes Sociais</h2>
+      <ul>
+        <li><a href="mailto:caiojose531@gmail.com">E-mail</a></li>
+        <li><a href="https://www.linkedin.com/in/caio-campolino-0ab401269" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.github.com/Caio-Campolino/" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Scripts JavaScript -->
+  <script>
+    // Lista de UCs pré-definidas
+    const ucs = [
+      "Ambientes computacionais e conectividade",
+      "Gestão e qualidade de software",
+      "Modelagem de software",
+      "Modelos, métodos e técnicas da engenharia de software",
+      "Programação de soluções computacionais",
+      "Sistemas computacionais e segurança",
+      "Inovação, sustentabilidade e competitividade empresarial",
+      "Análise de dados e big data",
+      "Inglês instrumental e pensamento digital"
+    ];
+
+    // Renderiza dinamicamente a lista de UCs no HTML
+    function renderizarUCs() {
+      const ul = document.getElementById("lista-ucs");
+      ul.innerHTML = "";
+      ucs.forEach((uc, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${uc}
+          <button class="ordenar" onclick="moverParaCima(${index})">▲</button>
+          <button class="ordenar" onclick="moverParaBaixo(${index})">▼</button>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    // Adiciona nova UC via prompt
+    function adicionarUC() {
+      const novaUC = prompt("Digite o nome da nova UC:");
+      if (novaUC && novaUC.trim() !== "") {
+        ucs.push(novaUC.trim());
+        renderizarUCs();
+      } else {
+        alert("Nome inválido. Tente novamente.");
+      }
+    }
+
+    // Move UC para cima na lista
+    function moverParaCima(index) {
+      if (index > 0) {
+        [ucs[index], ucs[index - 1]] = [ucs[index - 1], ucs[index]];
+        renderizarUCs();
+      }
+    }
+
+    // Move UC para baixo na lista
+    function moverParaBaixo(index) {
+      if (index < ucs.length - 1) {
+        [ucs[index], ucs[index + 1]] = [ucs[index + 1], ucs[index]];
+        renderizarUCs();
+      }
+    }
+
+    // Aplica máscara de CPF em tempo real
+    function mascararCPF(input) {
+      let valor = input.value.replace(/\D/g, '');
+      if (valor.length > 11) valor = valor.slice(0, 11);
+      valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+      valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+      valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      input.value = valor;
+    }
+
+    // Valida formato de CPF com regex
+    function validarCPF() {
+      const cpf = document.getElementById("cpf").value.trim();
+      const regex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+      const aviso = document.getElementById("mensagem-cpf");
+      aviso.style.display = regex.test(cpf) ? "none" : "block";
+    }
+
+    // Valida formato básico de e-mail com regex
+    function validarEmail() {
+      const email = document.getElementById("email").value.trim();
+      const aviso = document.getElementById("mensagem-email");
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      aviso.style.display = regex.test(email) ? "none" : "block";
+    }
+
+    // Adiciona novo parágrafo ao perfil pessoal via DOM
+    function adicionarPerfil() {
+      const input = document.getElementById("nova-info");
+      const texto = input.value.trim();
+      if (texto !== "") {
+        const novoParagrafo = document.createElement("p");
+        novoParagrafo.textContent = texto;
+        document.getElementById("perfil-pessoal").appendChild(novoParagrafo);
+        input.value = "";
+      }
+    }
+
+    // Troca imagem principal da galeria
+    function changePhoto(element) {
+      document.getElementById("mainPhoto").src = element.src;
+    }
+
+    // Renderiza as UCs ao carregar a página
+    renderizarUCs();
+  </script>
+</body>
+</html>
